@@ -6,3 +6,11 @@
         <CarDetailContact />
     </div>
 </template>
+<script setup>
+    const route = useRoute();
+    const { toTitleCase } = useUtilities();
+
+    useHead({
+        title: toTitleCase(route.params.name),
+    });
+</script>
