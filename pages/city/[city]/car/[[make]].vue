@@ -1,6 +1,6 @@
 <template>
     <div class="flex mt-50">
-        <LayoutSidebar />
+        <CarSidebar />
         <CarCard />
     </div>
 </template>
