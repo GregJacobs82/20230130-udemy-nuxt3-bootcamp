@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <h1>Cars</h1>
+    <div class="container mx-auto">
         <div class="mt-32 flex">
             <!-- CARS SIDEBAR -->
             <div class="shadow border w-64 mr-10 z-30 h-[190px]">
@@ -33,8 +32,8 @@
             </div>
 
             <!-- CARS INDEX -->
-            <div>
-                Cars Index...
+            <div class="w-full">
+                <CarCard />
             </div>
         </div>
     </div>
