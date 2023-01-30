@@ -13,6 +13,7 @@
             p-4
             shadow-md
         ">
-        <a href="#" class="text-3xl font-mono">cartrader</a>
+        <NuxtLink to="/" class="text-3xl font-mono">cartrader</NuxtLink>
+        <NuxtLink to="/cars">Cars</NuxtLink>
     </header>
 </template>
