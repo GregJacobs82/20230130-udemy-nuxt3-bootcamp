@@ -16,7 +16,6 @@
         <NuxtLink to="/" class="text-3xl font-mono">cartrader</NuxtLink>
         <div>
             <NuxtLink to="/cars" class="mr-3">Cars</NuxtLink>
-            <NuxtLink to="/details" class="mr-3">Details</NuxtLink>
         </div>
     </header>
 </template>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div><h1>Car Page</h1></div>
-        <LayoutSidebar />
+        <CarSidebar />
         <NuxtPage />
     </div>
 </template>
