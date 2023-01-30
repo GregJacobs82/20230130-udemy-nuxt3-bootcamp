@@ -32,4 +32,11 @@
             return c.id === parseInt(route.params.id);
         });
     });
+
+    if(!car.value) {
+        throw createError({
+            statusCode: 404,
+            message: `Car with ID of [${route.params.id}] does not exist`,
+        });
+    }
 </script>

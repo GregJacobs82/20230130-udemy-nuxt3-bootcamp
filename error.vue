@@ -15,6 +15,9 @@
     const router = useRouter();
 
     const navigateBack = () => {
-        router.back(); // navigateTo("/");
+        // CLEARERROR is necessary here so that the Custom "throw createError" error does not persist
+        clearError({
+            redirect: router.back(),
+        });
     }
 </script>
