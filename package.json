@@ -8,6 +8,9 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "^3.1.0"
+    "nuxt": "^3.0.0"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.1.3"
   }
 }
