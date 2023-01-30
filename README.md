@@ -40,3 +40,7 @@ npm run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+
+## Udemy
+https://www.udemy.com/course/the-nuxt-3-bootcamp-the-complete-developer-guide/
