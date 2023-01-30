@@ -6,7 +6,7 @@
       "url": "https://www.carhelpcanada.com/wp-content/uploads/2019/12/2020-Range-Rover-Evoque-2.jpg",
       "seats": 5,
       "miles": "14,666",
-      "features": ["No Accidents", "Low KM", "Vehicle Detailed", "Leather Interior"],
+      "features": ["No Accidents", "Low KM", "Vehicle Detailed"],
       "description": "The customer is very important, the customer will be followed by the customer. Let's live and enjoy the freedom of the eros. There was no house, no mass, and no members."
     },
     {
@@ -26,7 +26,17 @@
       "url": "https://www.topgear.com/sites/default/files/cars-car/carousel/2021/02/pcgb20_1441_fine.jpg",
       "seats": 5,
       "miles": "0",
-      "features": ["No Accidents", "Low KM", "Vehicle Detailed", "Leather Interior"],
+      "features": ["No Accidents", "Leather Interior"],
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis odio et"
+    },
+    {
+      "id": 5,
+      "name": "Volvo XC40",
+      "price": "63,139",
+      "url": "https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg",
+      "seats": 6,
+      "miles": "10,001",
+      "features": ["No Accidents", "Leather Interior", "Cool Car"],
+      "description": "This is a Volvo. Nuff Said."
     }
-  ]
+]
