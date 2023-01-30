@@ -17,9 +17,10 @@
 </template>
 <script setup>
     const city = ref('');
-    const router = useRouter();
 
     const handleSearch = () => {
-        router.push(`/city/${city.value}/car`);
+        if (city.value) {
+            navigateTo(`/city/${city.value}/car`);
+        }
     }
 </script>
