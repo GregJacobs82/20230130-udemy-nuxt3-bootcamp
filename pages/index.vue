@@ -21,3 +21,9 @@
         <div class="z-1 absolute w-full h-full bg-black opacity-50"></div>
     </div>
 </template>
+
+<script setup>
+    useHead({
+        title: 'Car Trader',
+    });
+</script>

@@ -20,7 +20,7 @@
                     <h1 class="text-2xl text-blue-700">
                         Volvo XC40
                     </h1>
-                    <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac libero lobortis eros blandit pellentesque. Duis nec vestibulum massa, nec sodales nulla.</p>
+                    <p class="text-gray-700">The customer is very important, the customer will be followed by the customer. Let's live and enjoy the freedom of the eros. There was no house, no mass, and no members.</p>
                 </div>
                 <!-- PRICE -->
                 <h1 class="mt-auto text-xl">$39,500</h1>

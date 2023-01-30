@@ -35,10 +35,7 @@
         <!-- CAR DESCRIPTION -->
         <div class="mt-5">
             <p class="mb-10">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem
-                consequuntur, et saepe sequi, ipsum quisquam iste autem quas vel aperiam
-                laboriosam dolorum vero tempore placeat, asperiores alias magni. Nulla,
-                dolores.
+                The customer is very important, the customer will be followed by the customer. Let's live and enjoy the freedom of the eros. There was no house, no mass, and no members.
             </p>
         </div>
 
