@@ -6,15 +6,15 @@
             <h3>Location</h3>
             <h3
                 class="text-blue-400 capitalize cursor-pointer"
-                @click="togglePopup"
+                @click="toggleModal('location')"
             >
-                {{ city }}
+                {{ currentCity }}
             </h3>
 
             <!-- CHANGE CITY LOCATION -->
             <div
+                v-if="modal.location"
                 class="absolute border shadow-lg left-56 top-1 m-1 bg-white"
-                :class="{ 'hidden':hidePopup }"
                 style="z-index:100;"
             >
                 <!-- HEADER -->
@@ -22,15 +22,24 @@
                     <div class="text-gray-500 p-2">Change Location</div>
                     <button
                         class="py-1 px-3 rounded-lg font-bold"
-                        @click="togglePopup"
+                        @click="toggleModal('location')"
                     >
                         X
                     </button>
                 </div>
                 <!-- CONTENT -->
                 <div class="p-5">
-                    <input type="text" class="border p-1 rounded" placeholder="City..." />
-                    <button class="bg-blue-400 w-full mt-2 rounded text-white p-1">
+                    <input
+                        v-model="newCity"
+                        type="text"
+                        class="border p-1 rounded"
+                        placeholder="City..."
+                        @keypress.enter="onChangeLocation"
+                    />
+                    <button
+                        class="bg-blue-400 w-full mt-2 rounded text-white p-1"
+                        @click="onChangeLocation"
+                    >
                         Apply
                     </button>
                 </div>
@@ -51,16 +60,26 @@
     </div>
 </template>
 <script setup>
-    const hidePopup = ref(true);
+    const route = useRoute();
+    const currentCity = route.params.city;
+    const newCity = ref('');
 
-    const togglePopup = () => {
-        hidePopup.value = !hidePopup.value
+    const modal = ref({
+        location: false,
+        make: false,
+        price: false,
+    });
+
+    const toggleModal = (key) => {
+        modal.value[key] = !modal.value[key];
+    };
+
+    const onChangeLocation = () => {
+        if (!newCity.value) return;
+        toggleModal('location');
+        navigateTo(`/city/${newCity.value}/car/${route.params.make}`);
+        newCity.value = '';
     }
 
-    const props = defineProps({
-        city: {
-            type: String,
-            default: 'Toronto',
-        },
-    });
+
 </script>
