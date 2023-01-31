@@ -53,7 +53,7 @@
                 {{ route.params.make || "Any" }}
             </h3>
 
-            <!-- MODAL: Change City Location -->
+            <!-- MODAL: Change Car Make -->
             <div
                 v-if="modal.make"
                 class="absolute border shadow-lg top-0 m-1 bg-white w-[600px] bg-gray-50"
@@ -90,9 +90,52 @@
         </div>
 
         <!-- SEARCH CAR PRICE -->
-        <div class="p-5 flex justify-between relative cursor-pointer border-b">
+        <div class="p-5 flex justify-between relative border-b">
             <h3>Price</h3>
-            <h3 class="text-blue-400 capitalize">Any</h3>
+            <h3 class="text-blue-400 capitalize cursor-pointer" @click="toggleModal('price')">
+                Any
+            </h3>
+
+            <!-- MODAL: Change Price -->
+            <div
+                v-if="modal.price"
+                class="absolute border shadow-lg top-0 m-1 bg-gray-50"
+                style="z-index:100;left:100%;"
+            >
+                <!-- HEADER -->
+                <div class="flex items-center justify-between border-b w-100">
+                    <div class="text-gray-500 p-2">Change Price</div>
+                    <button
+                        class="py-1 px-3 rounded-lg font-bold"
+                        @click="toggleModal('price')"
+                    >
+                        X
+                    </button>
+                </div>
+                <!-- CONTENT -->
+                <div class="p-5">
+                    <input
+                        v-model="priceRange.min"
+                        type="number"
+                        class="border p-1 rounded mb-3"
+                        placeholder="Min"
+                        @keypress.enter="onChangePrice"
+                    />
+                    <input
+                        v-model="priceRange.max"
+                        type="number"
+                        class="border p-1 rounded mb-3"
+                        placeholder="Max"
+                        @keypress.enter="onChangePrice"
+                    />
+                    <button
+                        class="bg-blue-400 w-full rounded text-white p-1"
+                        @click="onChangePrice"
+                    >
+                        Apply
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -101,6 +144,10 @@
     const route = useRoute();
     const currentCity = route.params.city;
     const newCity = ref('');
+    const priceRange = ref({
+        min: '',
+        max: '',
+    });
 
     const modal = ref({
         location: false,
