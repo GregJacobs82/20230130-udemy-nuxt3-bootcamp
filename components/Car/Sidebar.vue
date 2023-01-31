@@ -76,6 +76,14 @@
 
     const onChangeLocation = () => {
         if (!newCity.value) return;
+
+        // IT SHOULD THROW AN ERROR IF USER INPUTS CITY AS NOT A STRING
+        if (!isNaN(parseInt(newCity.value))) {
+            throw createError({
+                statusCode: 400,
+                message: 'Invalid City Format',
+            });
+        }
         toggleModal('location');
         navigateTo(`/city/${newCity.value}/car/${route.params.make}`);
         newCity.value = '';
