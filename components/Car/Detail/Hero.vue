@@ -1,9 +1,10 @@
 <template>
     <div class="mt-5">
-        <img
+        <NuxtImg
             :src="imgUrl"
             class="w-full"
-            alt=""
+            :alt="`${name} - ${miles} miles, $${price}`"
+            sizes="xl:600px lg:400px md:300px sm:150px"
         />
         <h1 class="mt-10 text-4xl">{{ name }}</h1>
         <div
