@@ -14,8 +14,9 @@
             shadow-md
         ">
         <NuxtLink to="/" class="text-3xl font-mono">cartrader</NuxtLink>
-        <div>
-            <NuxtLink to="/cars" class="mr-3">Cars</NuxtLink>
+        <div class="d-inline-flex items-center">
+            <small class="mr-2 opacity-50">Nearby</small>
+            <NuxtLink to="/city/charleston/car" class="mr-3">Charleston, SC</NuxtLink>
         </div>
     </header>
 </template>

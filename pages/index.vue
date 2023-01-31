@@ -24,6 +24,6 @@
 
 <script setup>
     useHead({
-        title: 'Car Trader',
+        title: 'Car Trader 1.0 - by Greg Jacobs',
     });
 </script>

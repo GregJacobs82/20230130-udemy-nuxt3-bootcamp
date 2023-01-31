@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto">
+    <div v-if="cars && cars.length" class="container mx-auto">
         <div class="mt-32 flex">
             <div>
                 <h1 class="text-2xl mb-3">Filters</h1>
@@ -17,6 +17,9 @@
             </div>
         </div>
     </div>
+    <div v-else>
+        Loading cars...
+    </div>
 </template>
 
 <script setup>
@@ -24,6 +27,6 @@
     const route = useRoute();
 
     useHead({
-        title: `Cars Index of ${cars.length}`,
+        title: `${cars.length} cars in ${route.params.city.toUpperCase()} - Car Trader 1.0 by Greg Jacobs`,
     });
 </script>

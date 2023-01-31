@@ -1,18 +1,10 @@
 <template>
     <div
+        v-if="car"
+        class="shadow border w-full overflow-hidden mb-5 cursor-pointer h-[200px]"
         @click="navigateTo(`/car/${car.name}-${car.id}`)"
-        class="
-            shadow
-            border
-            w-full
-            overflow-hidden
-            mb-5
-            cursor-pointer
-            h-[200px]
-        "
     >
         <div class="flex h-full">
-
             <img
                 class="w-[300px] h-full"
                 :src="car.url"
