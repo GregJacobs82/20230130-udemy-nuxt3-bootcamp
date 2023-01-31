@@ -1,21 +1,30 @@
 <template>
     <div
         v-if="car"
-        class="shadow border w-full overflow-hidden mb-5 cursor-pointer h-[200px]"
-        @click="navigateTo(`/car/${car.name}-${car.id}`)"
+        class="relative shadow border w-full overflow-hidden mb-5 h-[200px]"
     >
+        <img
+            :src="favored ? heartFilled : heartOutline"
+            alt="I love this car!"
+            class="absolute w-6 right-2 top-2 z-10 cursor-pointer"
+            @click="favored = !favored"
+        />
         <div class="flex h-full">
-            <NuxtImg
-                class="w-[300px] h-full"
-                :src="car.url"
-                :alt="car.name"
-                sizes="xs:300px"
-            />
-            <div class="p-4 flex flex-col">
+            <NuxtLink :to="carLink" class="w-[300px] h-full inline-block">
+                <NuxtImg
+                    class="w-full h-full object-cover"
+                    :src="car.url"
+                    :alt="car.name"
+                    sizes="xs:300px"
+                />
+            </NuxtLink>
+            <div class="p-4 inline-flex flex-col flex-1 overflow-auto">
                 <div>
-                    <h1 class="text-2xl text-blue-700">
-                        {{ car.name }}
-                    </h1>
+                    <NuxtLink :to="carLink">
+                        <h1 class="text-2xl text-blue-700">
+                            {{ car.name }}
+                        </h1>
+                    </NuxtLink>
                     <p class="text-gray-700">
                         {{ car.description }}
                     </p>
@@ -30,10 +39,21 @@
 </template>
 
 <script setup>
+    import heartFilled from '@/assets/heartFilled.png';
+    import heartOutline from '@/assets/heartOutline.png';
+
     const props = defineProps({
         car: {
             type: Object,
             default: () => {},
         },
+    });
+
+    const carLink = computed(() => {
+        return `/car/${props.car.name}-${props.car.id}`;
+    });
+
+    const favored = useState(`favored-${props.car.id}`, () => {
+        return false;
     });
 </script>
