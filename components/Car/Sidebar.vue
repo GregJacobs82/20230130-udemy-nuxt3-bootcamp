@@ -93,7 +93,7 @@
         <div class="p-5 flex justify-between relative border-b">
             <h3>Price</h3>
             <h3 class="text-blue-400 capitalize cursor-pointer" @click="toggleModal('price')">
-                Any
+                {{ priceRangeText }}
             </h3>
 
             <!-- MODAL: Change Price -->
@@ -114,20 +114,38 @@
                 </div>
                 <!-- CONTENT -->
                 <div class="p-5">
-                    <input
-                        v-model="priceRange.min"
-                        type="number"
-                        class="border p-1 rounded mb-3"
-                        placeholder="Min"
-                        @keypress.enter="onChangePrice"
-                    />
-                    <input
-                        v-model="priceRange.max"
-                        type="number"
-                        class="border p-1 rounded mb-3"
-                        placeholder="Max"
-                        @keypress.enter="onChangePrice"
-                    />
+                    <div class="lex justify-between bg-white border rounded mb-3">
+                        <input
+                            v-model="priceRange.min"
+                            type="number"
+                            class="rounded-l p-1 rounded"
+                            placeholder="Min"
+                            @keypress.enter="onChangePrice"
+                        />
+                        <button
+                            class="bg-red-400 text-white py-1 px-2 rounded-r h-full"
+                            title="Clear the Min Price"
+                            @click="priceRange.min = undefined"
+                        >
+                            X
+                        </button>
+                    </div>
+                    <div class="flex justify-between bg-white border rounded mb-3">
+                        <input
+                            v-model="priceRange.max"
+                            type="number"
+                            class="rounded-l p-1"
+                            placeholder="Max"
+                            @keypress.enter="onChangePrice"
+                        />
+                        <button
+                            class="bg-red-400 text-white py-1 px-2 rounded-r h-full"
+                            title="Clear the Max Price"
+                            @click="priceRange.max = undefined"
+                        >
+                            X
+                        </button>
+                    </div>
                     <button
                         class="bg-blue-400 w-full rounded text-white p-1"
                         @click="onChangePrice"
@@ -142,11 +160,22 @@
 <script setup>
     const { makes }= useCars();
     const route = useRoute();
+    const router = useRouter();
     const currentCity = route.params.city;
     const newCity = ref('');
     const priceRange = ref({
         min: '',
         max: '',
+    });
+
+    const priceRangeText = computed(() => {
+        const minPrice = route.query.minPrice;
+        const maxPrice = route.query.maxPrice;
+
+        if (!minPrice && !maxPrice) return 'Any';
+        else if (!minPrice && maxPrice) return `< $${maxPrice}`;
+        else if (minPrice && !maxPrice) return `> $${minPrice}`;
+        else return `$${minPrice} - $${maxPrice}`;
     });
 
     const modal = ref({
@@ -178,6 +207,24 @@
         toggleModal('make');
         if (make === 'Any') make = '';
         navigateTo(`/city/${currentCity}/car/${make}`)
+    }
+
+    // todo: this is sloppy
+    const onChangePrice = () => {
+        toggleModal('price');
+        if (priceRange.value.max && priceRange.value.min) {
+            if (priceRange.value.min > priceRange.value.max) return;
+            router.push({
+                query: {minPrice: priceRange.value.min, maxPrice: priceRange.value.max,}
+            });
+        }
+        else if (priceRange.value.min) {
+            router.push({query: {minPrice: priceRange.value.min}});
+        } else if (priceRange.value.max) {
+            router.push({query: {maxPrice: priceRange.value.max,}});
+        } else {
+            navigateTo(`/city/${currentCity}/car/`);
+        }
     }
 </script>
 <style scoped>
