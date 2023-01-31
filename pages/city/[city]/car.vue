@@ -14,6 +14,8 @@
                         v-for="car in cars"
                         :key="car.id"
                         :car="car"
+                        :favored="car.id in favorite"
+                        @favor="toggleFavorite"
                     />
                 </div>
             </div>
@@ -47,4 +49,18 @@
     useHead({
         title: `${cars.length} cars in ${route.params.city.toUpperCase()} - Car Trader 1.0 by Greg Jacobs`,
     });
+
+    const favorite = useLocalStorage('favorite', {});
+
+    const toggleFavorite = (id) => {
+        if (id in favorite.value) {
+            delete favorite.value[id];
+        }
+        else {
+            favorite.value = {
+                ...favorite.value,
+                [id]: true,
+            }
+        }
+    }
 </script>

@@ -7,7 +7,7 @@
             :src="favored ? heartFilled : heartOutline"
             alt="I love this car!"
             class="absolute w-6 right-2 top-2 z-10 cursor-pointer"
-            @click="favored = !favored"
+            @click="emit('favor', car.id)"
         />
         <div class="flex h-full">
             <NuxtLink :to="carLink" class="w-[300px] h-full inline-block">
@@ -21,7 +21,7 @@
             <div class="p-4 inline-flex flex-col flex-1 overflow-auto">
                 <div>
                     <NuxtLink :to="carLink">
-                        <h1 class="text-2xl text-blue-700">
+                        <h1 class="text-2xl text-blue-700 inline-block">
                             {{ car.name }}
                         </h1>
                     </NuxtLink>
@@ -47,13 +47,15 @@
             type: Object,
             default: () => {},
         },
+        favored: {
+            type: Boolean,
+            default: false,
+        },
     });
 
     const carLink = computed(() => {
         return `/car/${props.car.name}-${props.car.id}`;
     });
 
-    const favored = useState(`favored-${props.car.id}`, () => {
-        return false;
-    });
+    const emit = defineEmits(['favor']);
 </script>
