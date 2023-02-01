@@ -122,13 +122,13 @@
                             placeholder="Min"
                             @keypress.enter="onChangePrice"
                         />
-                        <button
-                            class="bg-red-400 text-white py-1 px-2 rounded-r h-full"
+                        <Btn
+                            class="bg-red-400 py-1 px-2 rounded-r rounded-l-none h-full"
                             title="Clear the Min Price"
                             @click="priceRange.min = undefined"
                         >
                             X
-                        </button>
+                        </Btn>
                     </div>
                     <div class="flex justify-between bg-white border rounded mb-3">
                         <input
@@ -138,13 +138,13 @@
                             placeholder="Max"
                             @keypress.enter="onChangePrice"
                         />
-                        <button
-                            class="bg-red-400 text-white py-1 px-2 rounded-r h-full"
+                        <Btn
+                            class="bg-red-400 py-1 px-2 rounded-r rounded-l-none h-full"
                             title="Clear the Max Price"
                             @click="priceRange.max = undefined"
                         >
                             X
-                        </button>
+                        </Btn>
                     </div>
                     <Btn
                         class="w-full"

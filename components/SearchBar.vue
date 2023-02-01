@@ -7,12 +7,12 @@
             class="py-3 px-5 w-full text-2xl rounded-full focus:outline-none"
             @keypress.enter="handleSearch"
         />
-        <button
-            class="bg-sky-500 px-10 text-white"
+        <Btn
+            class="bg-sky-500 px-10 rounded-l-none"
             @click="handleSearch"
         >
             Search
-        </button>
+        </Btn>
     </div>
 </template>
 <script setup>
