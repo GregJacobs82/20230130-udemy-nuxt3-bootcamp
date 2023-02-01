@@ -4,6 +4,7 @@ export default defineNuxtConfig({
         '@nuxtjs/tailwindcss',
         '@nuxt/image-edge',
         '@vueuse/nuxt',
+        '@nuxtjs/supabase',
     ],
     image: {
         // The screen sizes predefined by `@nuxt/image`:
