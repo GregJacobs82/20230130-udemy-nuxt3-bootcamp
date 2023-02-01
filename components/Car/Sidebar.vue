@@ -1,5 +1,5 @@
 <template>
-    <div class="shadow border w-64 mr-10 z-30 h-[190px] bg-gray-50">
+    <div class="shadow border w-64 mr-10 z-30 h-[190px] bg-blue-50">
 
         <!-- SEARCH LOCATION -->
         <div class="p-5 flex justify-between relative border-b">
@@ -14,7 +14,7 @@
             <!-- MODAL: Change City Location -->
             <div
                 v-if="modal.location"
-                class="absolute border shadow-lg top-0 m-1 bg-gray-50"
+                class="absolute border shadow-lg top-0 m-1 bg-blue-50"
                 style="z-index:100;left:100%;"
             >
                 <!-- HEADER -->
@@ -36,12 +36,12 @@
                         placeholder="City..."
                         @keypress.enter="onChangeLocation"
                     />
-                    <button
-                        class="bg-blue-400 w-full mt-2 rounded text-white p-1"
+                    <Btn
+                        class="w-full mt-2"
                         @click="onChangeLocation"
                     >
                         Apply
-                    </button>
+                    </Btn>
                 </div>
             </div>
         </div>
@@ -56,16 +56,16 @@
             <!-- MODAL: Change Car Make -->
             <div
                 v-if="modal.make"
-                class="absolute border shadow-lg top-0 m-1 bg-white w-[600px] bg-gray-50"
+                class="absolute border shadow-lg top-0 m-1 bg-white w-[600px] bg-blue-50"
                 style="z-index:100;left:100%"
             >
                 <!-- HEADER -->
                 <div class="flex items-center justify-between border-b w-100">
                     <div class="text-gray-500 p-2">Change Make</div>
                     <div>
-                        <button class="bg-blue-400 text-white px-3 py-0 rounded cursor-pointer" @click="onChangeMake('Any')">
+                        <Btn class="px-3 py-0" @click="onChangeMake('Any')">
                             Clear
-                        </button>
+                        </Btn>
                         <button
                             class="py-1 px-3 rounded-lg font-bold"
                             @click="toggleModal('make')"
@@ -81,7 +81,7 @@
                         :key="index"
                         class="inline-flex w-1/3"
                     >
-                        <span class="hover-text-blue cursor-pointer" @click="onChangeMake(make)">
+                        <span class="hover:text-blue-400 transition duration-300 ease-in-out cursor-pointer" @click="onChangeMake(make)">
                             {{ make }}
                         </span>
                     </h4>
@@ -99,7 +99,7 @@
             <!-- MODAL: Change Price -->
             <div
                 v-if="modal.price"
-                class="absolute border shadow-lg top-0 m-1 bg-gray-50"
+                class="absolute border shadow-lg top-0 m-1 bg-blue-50"
                 style="z-index:100;left:100%;"
             >
                 <!-- HEADER -->
@@ -146,12 +146,12 @@
                             X
                         </button>
                     </div>
-                    <button
-                        class="bg-blue-400 w-full rounded text-white p-1"
+                    <Btn
+                        class="w-full"
                         @click="onChangePrice"
                     >
                         Apply
-                    </button>
+                    </Btn>
                 </div>
             </div>
         </div>
@@ -227,6 +227,3 @@
         }
     }
 </script>
-<style scoped>
-    .hover-text-blue:hover { color: dodgerblue; }
-</style>

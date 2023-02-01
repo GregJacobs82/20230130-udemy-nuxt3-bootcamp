@@ -4,7 +4,7 @@
             :src="imgUrl"
             class="w-full"
             :alt="`${name} - ${miles} miles, $${price}`"
-            sizes="xl:600px lg:400px md:300px sm:150px"
+            sizes="sm:150px md:300px lg:400px xl:600px"
         />
         <h1 class="mt-10 text-4xl">{{ name }}</h1>
         <div
