@@ -105,9 +105,12 @@
   {
     "id": 10,
     "name": "Volvo XC40",
-    "price": "63,139",
+    "year": 2012,
+    "price": 63139,
     "url": "/Volvo-XC40-white-scaled.jpg",
     "seats": 6,
+    "make": "Volvo",
+    "city": "Charleston",
     "miles": "10,001",
     "features": ["No Accidents", "Leather Interior", "Cool Car"],
     "description": "This is a Volvo. Nuff Said."
