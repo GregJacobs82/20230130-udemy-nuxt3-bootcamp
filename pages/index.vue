@@ -8,12 +8,12 @@
         />
 
         <!-- OVERLAY -->
-        <div class="absolute w-full h-full bg-black opacity-50"></div>
+        <div class="absolute w-full h-full bg-black opacity-70"></div>
 
         <!-- CONTENT -->
         <div class="absolute w-full h-full flex justify-center items-center p-8">
-            <div class="text-center w-100 xl:w-1/2">
-                <h1 class="text-8xl font-serif mb-10 text-white">Find your drive</h1>
+            <div class="text-center w-100 xl:w-2/3 max-w-[800px]">
+                <h1 class="text-6xl md:text-7xl lg:text-8xl font-serif mb-10 text-white">Find your drive</h1>
                 <SearchBar />
             </div>
         </div>
