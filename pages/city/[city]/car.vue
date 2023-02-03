@@ -43,8 +43,15 @@
 </template>
 
 <script setup>
-    const { cars } = useCars();
     const route = useRoute();
+    // const { cars } = useCars(); // THIS IS LOCAL DATA JSON FILE: /data/cars.json
+
+    // THIS LOADS CARS FROM SERVER: /api/cars/[city.js]
+    const cars = await useFetchCars(route.params.city, {
+        minPrice: route.query.minPrice,
+        maxPrice: route.query.maxPrice,
+        make: route.params.make,
+    });
 
     useHead({
         title: `${cars.length} cars in ${route.params.city.toUpperCase()} - Car Trader 1.0 by Greg Jacobs`,
