@@ -1,5 +1,5 @@
 <template>
-    <div v-if="cars && cars.length" class="container mx-auto">
+    <div class="container mx-auto">
         <NuxtErrorBoundary>
             <div class="mt-20 flex">
                 <div>
@@ -8,7 +8,7 @@
                 </div>
 
                 <!-- CARS INDEX -->
-                <div class="w-full">
+                <div v-if="cars && cars.length" class="w-full">
                     <h1 class="text-2xl mb-3">({{ cars?.length }}) Cars</h1>
                     <CarCard
                         v-for="car in cars"
@@ -17,6 +17,10 @@
                         :favored="car.id in favorite"
                         @favor="toggleFavorite"
                     />
+                </div>
+                <div v-else class="text-red-600">
+                    <h1 class="text-2xl mb-3">No cars with these filters</h1>
+                    <h3>Clear the filters to see some results!</h3>
                 </div>
             </div>
 
@@ -37,9 +41,6 @@
             </template>
         </NuxtErrorBoundary>
     </div>
-    <div v-else>
-        Loading cars...
-    </div>
 </template>
 
 <script setup>
@@ -47,11 +48,19 @@
     // const { cars } = useCars(); // THIS IS LOCAL DATA JSON FILE: /data/cars.json
 
     // THIS LOADS CARS FROM SERVER: /api/cars/[city.js]
-    const cars = await useFetchCars(route.params.city, {
+    const {data: cars, refresh} = await useFetchCars(route.params.city, {
         minPrice: route.query.minPrice,
         maxPrice: route.query.maxPrice,
         make: route.params.make,
     });
+
+    // HACKY WAY OF RELOADING THE PAGE WHEN THE ROUTE CHANGES // todo: FIX THIS
+    // VIDEO REFERENCE:  https://www.udemy.com/course/the-nuxt-3-bootcamp-the-complete-developer-guide/learn/lecture/35326118
+    watch(
+        () => route.query,
+        // () =>refresh()
+        () => {window.location.reload(true)}
+    );
 
     useHead({
         title: `${cars.length} cars in ${route.params.city.toUpperCase()} - Car Trader 1.0 by Greg Jacobs`,
